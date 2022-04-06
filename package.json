@@ -1,0 +1,50 @@
+{
+  "name": "homebridge-smartthings-dev",
+  "version": "1.0.0",
+  "description": "Provide your Homebridge accessories to SmartThings.",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon"
+  },
+  "nodemonConfig": {
+    "watch": [],
+    "ext": "js",
+    "ignore": [],
+    "exec": "~/npm/bin/homebridge -D -R -P ~/Code",
+    "signal": "SIGTERM",
+    "env": {
+      "NODE_OPTIONS": "--trace-warnings"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XueningXu/homebridge-smartthings-dev.git"
+  },
+  "keywords": [
+    "SmartThings",
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=4.4.5",
+    "homebridge": ">=0.4.16"
+  },
+  "devDependencies": {
+    "@oznu/hap-client": "^1.8.1",
+    "documentation": "^13.2.5",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bottleneck": ">=2.19.5",
+    "debug": ">=4.3.3",
+    "hap-node-client": ">=0.1.21",
+    "is-my-json-valid": ">=2.20.6",
+    "mqtt": "4.2.8"
+  },
+  "author": "XueningXu",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/XueningXu/homebridge-smartthings-dev/issues"
+  },
+  "homepage": "https://github.com/XueningXu/homebridge-smartthings-dev#readme"
+}
