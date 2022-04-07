@@ -6,7 +6,7 @@ var os = require("os");
 const express = require('express');
 const bodyParser = require('body-parser');
 const packageConfig = require('./package.json');
-const httpsServer = require('./lib/st/httpsServer.js');
+const httpsServer = require('./lib/smartthings/httpsServer.js');
 const router_connector_smartthings = require('./lib/smartthings/smartthings-connector.js');
 const db = require('./lib/smartthings/db/db.js');
 let Service, Characteristic;
