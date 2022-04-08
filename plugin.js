@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const packageConfig = require('./package.json');
 const httpsServer = require('./lib/smartthings/httpsServer.js');
 const router_connector_smartthings = require('./lib/smartthings/smartthings-connector.js');
+const router_oauth2_ST = require('./lib/smartthings/oauth/oauth2.js');
 const db = require('./lib/smartthings/db/db.js');
 let Service, Characteristic;
 
@@ -157,6 +158,8 @@ smartthingsHome.prototype.didFinishLaunching = function() {
     res.send('testing');
   })
   app.use('/smartthings', router_connector_smartthings); // integration with SmartThings
+  
+  app.use('/smartthings/oauth2', router_oauth2_ST);
 
   
   // Initialize HAP Connections
