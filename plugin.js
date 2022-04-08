@@ -12,6 +12,7 @@ const httpsServer = require('./lib/smartthings/httpsServer.js');
 // const router_connector_smartthings = require('./lib/smartthings/smartthings-connector.js');
 const router_oauth2_ST = require('./lib/smartthings/oauth/oauth2.js');
 const db = require('./lib/smartthings/db/db.js');
+const config = require('./lib/smartthings/config.js');
 let Service, Characteristic;
 
 
@@ -27,6 +28,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 // set view engine
 app.set('views', path.join(__dirname, 'lib/smartthings/views'));
 app.set('view engine', 'pug');
+
+
+// Create a default account for logging into MP-Mediator in development mode
+if(config.mode === 'dev') {
+  db.addAccount("test@mpm.com", "test");
+}
+
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
