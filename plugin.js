@@ -175,12 +175,6 @@ smartthingsHome.prototype.didFinishLaunching = function() {
   app.use('/smartthings/oauth2', router_oauth2_ST);
   
   
-  // catch 404 and forward to error handler
-  // app.use(function(req, res, next) {
-  //   next(createError(404));
-  // });
-  
-
   
   // Initialize HAP Connections
   smartthingsActions.hapDiscovery(options);
