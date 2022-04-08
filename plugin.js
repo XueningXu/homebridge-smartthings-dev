@@ -166,6 +166,14 @@ smartthingsHome.prototype.didFinishLaunching = function() {
   // start HTTPs server
   httpsServer.create_http_server(app);
   
+  
+  // testing URL for POST /
+  app.post('/', (req, res) => {
+    debug('testing URL for POST /:', req);
+    res.send('testing');
+  })
+  
+  
   //Route
   app.get('/', (req, res) => {
     res.send('testing');
