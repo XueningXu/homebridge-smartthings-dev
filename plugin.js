@@ -169,7 +169,7 @@ smartthingsHome.prototype.didFinishLaunching = function() {
   
   // testing URL for POST /
   app.post('/', (req, res) => {
-    console.log('testing URL for POST /:', req);
+    console.log('testing URL for POST /:', req.body);
     res.send('testing');
   })
   
