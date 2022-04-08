@@ -2,7 +2,9 @@
 
 var smartthingsActions = require('./lib/smartthingsActions.js');
 var EventEmitter = require('events').EventEmitter;
+var createError = require('http-errors');
 var os = require("os");
+var path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const packageConfig = require('./package.json');
@@ -22,6 +24,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+// set view engine
+app.set('view engine', 'pug');
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
@@ -160,6 +164,13 @@ smartthingsHome.prototype.didFinishLaunching = function() {
   // app.use('/smartthings', router_connector_smartthings); // integration with SmartThings
   
   app.use('/smartthings/oauth2', router_oauth2_ST);
+  
+  
+  // catch 404 and forward to error handler
+  app.use(function(req, res, next) {
+    next(createError(404));
+  });
+  
 
   
   // Initialize HAP Connections
