@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // set view engine
+app.set('views', path.join(__dirname, 'lib/smartthings/views'));
 app.set('view engine', 'pug');
 
 module.exports = function(homebridge) {
