@@ -30,11 +30,6 @@ app.set('views', path.join(__dirname, 'lib/smartthings/views'));
 app.set('view engine', 'pug');
 
 
-// Create a default account for logging into MP-Mediator in development mode
-if(config.mode === 'dev') {
-  db.addAccount("test@mpm.com", "test");
-}
-
 
 module.exports = function(homebridge) {
   Service = homebridge.hap.Service;
@@ -162,6 +157,11 @@ smartthingsHome.prototype.didFinishLaunching = function() {
   
   // Initialize the databases
   db.open();
+  
+  // Create a default account for logging into MP-Mediator in development mode
+  if(config.mode === 'dev') {
+    db.addAccount("test@mpm.com", "test");
+  }
   
   // start HTTPs server
   httpsServer.create_http_server(app);
