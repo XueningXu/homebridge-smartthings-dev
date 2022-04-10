@@ -223,22 +223,3 @@ smartthingsService.prototype = {
     return [informationService, smartthingsService];
   }
 };
-
-
-
-function pushDeviceToTargetPlatform(device, device_id, device_type) {
-  const device_ST = formatDevice4ST(device, device_id, device_type);
-  if(device_ST) {
-    api.push_device_discovery(device_ST);
-  } else {
-    debug('error pushing device to smartthings cloud: ', device_id);
-  }
-}
-
-
-
-function pushEventToTargetPlatform(device_id, device_type, event) {
-  formatEvent4ST(device_id, device_type, event).then((deviceState) => {
-    api.push_device_state(deviceState);
-  });
-}
